@@ -80,3 +80,11 @@ Basicamente a minha solução para o problema foi baseada na junção da soluç�
 
 ![](https://github.com/lobokoch/reinforcement-learning/blob/main/curva_convergencia_150.png?raw=true)
 
+# Funcionamento para executar a aplicação
+- O projeto é feito em Java 11 com Eclipse 2021-06 , portanto precisa de:
+-  JDK 11 - Pode ser baixada para o SO desejado a parti de: [https://adoptopenjdk.net](https://adoptopenjdk.net)
+-  Eclipse IDE - Pode ser baixado [daqui](https://www.eclipse.org/downloads/packages/release/2021-06/r/eclipse-ide-enterprise-java-and-web-developers)
+- Baixar o projeto [TrabalhoQLearning](https://github.com/lobokoch/reinforcement-learning/tree/main/TrabalhoQLearning) do GitHub
+- No Eclipse, configurar o build path para os jar externos do Furbot contidos no diretório: [dependencias_furbot](https://github.com/lobokoch/reinforcement-learning/tree/main/TrabalhoQLearning/dependencias_furbot) dentro do próprio projeto.
+
+! [](https://github.com/lobokoch/reinforcement-learning/blob/main/configrure_external_jars.png?raw=true)
