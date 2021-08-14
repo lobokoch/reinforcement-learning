@@ -61,5 +61,5 @@ Basicamente a minha solução para o problema foi baseada na junção da soluç�
 	- Average reward (last 10 episodes): -4.989999999999998
 	![](https://github.com/lobokoch/reinforcement-learning/blob/main/curva_convergencia_1.png?raw=true)
 	
-	b) *Apresente o tempo de processamento necessário para resolver o problema.*
+	b) *Apresente o tempo de processamento necessário para resolver o problema.*  
 	R: **0.443 segundos.**
