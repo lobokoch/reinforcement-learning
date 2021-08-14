@@ -67,16 +67,16 @@ Basicamente a minha solução para o problema foi baseada na junção da soluç�
 ### Mais alguns testes exploratórios  
 
 	** Com 10.000 episódios:**  
-	- Processing time .................: 2,979 segundos.
-	- Average reward (all episodes)....: -5.140559999999998
+	- Processing time .................: 2,979 segundos  
+	- Average reward (all episodes)....: -5.140559999999998  
 	- Average reward (last 10 episodes): -5.099999999999998  
 
 ![](https://github.com/lobokoch/reinforcement-learning/blob/main/curva_convergencia_10_000.png?raw=true)
 
 **Com 150 episódios:**  
-	- Processing time .................: 0,148 segundos.
-	- Average reward (all episodes)....: -5.742666666666662
-	- Average reward (last 10 episodes): -5.099999999999998
+	- Processing time .................: 0,148 segundos  
+	- Average reward (all episodes)....: -5.742666666666662  
+	- Average reward (last 10 episodes): -5.099999999999998  
 
 ![](https://github.com/lobokoch/reinforcement-learning/blob/main/curva_convergencia_150.png?raw=true)
 
