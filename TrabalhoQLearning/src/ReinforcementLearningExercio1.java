@@ -1,4 +1,5 @@
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,53 +15,10 @@ public class ReinforcementLearningExercio1 extends Furbot {
 		MundoVisual.iniciar("ReinforcementLearningExercio1.xml");
 	}
 	
-	private static double getPropDouble(String name, double defVal) {
-		String valueStr = System.getProperty(name);
-		
-		if (valueStr == null)
-			return defVal;
-		
-		try {
-			return Double.parseDouble(valueStr);
-		} catch (Exception e) {
-			System.err.println("Erro ao converter o valor: " + valueStr + ", da propriedade: " + name + ", para Double. O valor padrao: " + defVal  + " sera assumido.");
-			return defVal;
-		}
-	}
-	
-	private static int getPropInt(String name, int defVal) {
-		String valueStr = System.getProperty(name);
-		
-		if (valueStr == null)
-			return defVal;
-		
-		try {
-			return Integer.parseInt(valueStr);
-		} catch (Exception e) {
-			System.err.println("Erro ao converter o valor: " + valueStr + ", da propriedade: " + name + ", para Integer. O valor padrao: " + defVal  + " sera assumido.");
-			return defVal;
-		}
-	}
-	
-	private static boolean getPropBool(String name, boolean defVal) {
-		String valueStr = System.getProperty(name);
-		
-		if (valueStr == null)
-			return defVal;
-		
-		try {
-			return Boolean.parseBoolean(valueStr);
-		} catch (Exception e) {
-			System.err.println("Erro ao converter o valor: " + valueStr + ", da propriedade: " + name + ", para Boolean. O valor padrao: " + defVal  + " sera assumido.");
-			return defVal;
-		}
-	}
-
-	
 	@Override
 	public void inteligencia() throws Exception {
 		debug = getPropBool("debug", false);
-		int num_episodes = getPropInt("num_episodes", 1000);
+		int num_episodes = getPropInt("num_episodes", 10000);
 		int max_steps = getPropInt("max_steps", 100);
 		double alpha = getPropDouble("alpha", 0.5);
 		double gamma = getPropDouble("gamma", 0.9);
@@ -100,6 +58,24 @@ public class ReinforcementLearningExercio1 extends Furbot {
 		System.out.println(" " );
 		System.out.println("*************** REPORT ***************" );
 		System.out.println("Processing time .................: " + (ellapsedTime / (double)1000) + " seconds.");
+		
+		PrintWriter out = new PrintWriter("rewards.txt");
+		//String str = rewards.toString();
+		int max = rewards.size();
+		int from = 0;
+		int pageSize = 100;
+		int to = rewards.size() <= pageSize ? rewards.size() : pageSize;
+		out.print("[");
+		while (to <= max && from < max) {
+			List<Double> buf = rewards.subList(from, to-1);
+			out.println(buf.toString().replace("[", "").replace("]", ""));
+			out.print(',');
+			out.flush();			
+			from = to;
+			to = max - to <= pageSize ? max : to + pageSize; 
+		}
+		out.print("]");
+		out.close();
 		System.out.println("rewards..........................: " + rewards);
 		
 		System.out.println("Average reward (all episodes)....: " + rewards.stream().mapToDouble(Double::valueOf).sum() / num_episodes);
@@ -203,6 +179,48 @@ public class ReinforcementLearningExercio1 extends Furbot {
 		System.out.println("-----------------------------------------------------------------------------------------------------------");
 
 		return rewards;
+	}
+	
+	private static double getPropDouble(String name, double defVal) {
+		String valueStr = System.getProperty(name);
+		
+		if (valueStr == null)
+			return defVal;
+		
+		try {
+			return Double.parseDouble(valueStr);
+		} catch (Exception e) {
+			System.err.println("Erro ao converter o valor: " + valueStr + ", da propriedade: " + name + ", para Double. O valor padrao: " + defVal  + " sera assumido.");
+			return defVal;
+		}
+	}
+	
+	private static int getPropInt(String name, int defVal) {
+		String valueStr = System.getProperty(name);
+		
+		if (valueStr == null)
+			return defVal;
+		
+		try {
+			return Integer.parseInt(valueStr);
+		} catch (Exception e) {
+			System.err.println("Erro ao converter o valor: " + valueStr + ", da propriedade: " + name + ", para Integer. O valor padrao: " + defVal  + " sera assumido.");
+			return defVal;
+		}
+	}
+	
+	private static boolean getPropBool(String name, boolean defVal) {
+		String valueStr = System.getProperty(name);
+		
+		if (valueStr == null)
+			return defVal;
+		
+		try {
+			return Boolean.parseBoolean(valueStr);
+		} catch (Exception e) {
+			System.err.println("Erro ao converter o valor: " + valueStr + ", da propriedade: " + name + ", para Boolean. O valor padrao: " + defVal  + " sera assumido.");
+			return defVal;
+		}
 	}
 
 }
