@@ -18,7 +18,7 @@ public class ReinforcementLearningExercio1 extends Furbot {
 	@Override
 	public void inteligencia() throws Exception {
 		debug = getPropBool("debug", false);
-		int num_episodes = getPropInt("num_episodes", 10000);
+		int num_episodes = getPropInt("num_episodes", 150);
 		int max_steps = getPropInt("max_steps", 100);
 		double alpha = getPropDouble("alpha", 0.5);
 		double gamma = getPropDouble("gamma", 0.9);
