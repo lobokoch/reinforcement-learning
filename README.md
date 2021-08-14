@@ -22,7 +22,7 @@ Um agente deve percorrer a grade 7 x 6, encontrar um objeto e transporta-lo até
 
 Basicamente a minha solução para o problema foi baseada na junção da solução do Jupiter notebook que o professor apresentou em aula (Q-learning for Cliff Walking problem.ipynb) usando o algoritmo Q-learning com gym, mais o site [q-learning-simulator](https://www.mladdict.com/q-learning-simulator). Só implementei em Java e a parte do Environment e da execução do Steps do gym eu implementei usando o Furbot que já tem uma implementação de mundo em grid que favoreceu a implementação.
 
-1. **Modelagem do MDP:**
+1. **Modelagem do MDP:**  
 	*a) Apresente a modelagem de estados considerada, bem como a quantidade de estados presentes no MDP. Inclua na contagem os estados não válidos;*
 	R: **Os estados são as coordenadas x (colunas) e y (linhas) das células do mundo sendo 7 x 6 respectivamente. Os estados inválidos (agente não consegue transpor) são as coordenadas das células onde encontram-se as paredes (de tijolos no mundo Furbot). Todas as demais células possuem estados válidos e o agente recebe recompensa de -0.1, com exceção das células da base (Aliens verde), onde ai o agente recebe uma recompensa de 1.0 e o estado recebe DONE = true (objetivo atingido).**
 	
@@ -32,22 +32,21 @@ Basicamente a minha solução para o problema foi baseada na junção da soluç�
 	c) *Apresente a modelagem da função de recompensa, com as situações em que o agente é recompensado bem como a magnitude da recompensa. Justifique as suas escolhas.*
 	R: **Inicialmente todos os estados possuem recompensa 0.1 (me baseei no q-learning-simulator). Cada estado possui 4 ações possíveis (CIMA, DIREITA, ABAIXO, ESQUERDA ) e cada ação possui um atributo qValue que inicialmente possui valor zero. O agente recebe recompensa de -0.1 a cada mudança de estado, com exceção das células da base (Aliens verde), onde ai o agente recebe uma recompensa de +1. O cálculo de atualização do Q value usa a fórmula do algoritmo Q-Learning: Q(s,a)=Q(s,a)+α(r+γ maxQ(s​′​​,a​′​​)−Q(s,a))**
 
-2. **Configuração dos Experimentos**
+3. **Configuração dos Experimentos**  
 	a) *Apresente os valores de taxa de aprendizagem (alfa) e fator de desconto (gamma) do algoritmo de aprendizagem Q-Learning;*
 	R: **Utilizei os seguintes valores como padrão (podem ser configurados)**
 	
 	| alpha | gamma |
 	|--|--|
-	| 0.5 | 0.9 |
-
-
+	| 0.5 | 0.9 |  
+	
 	b) *Apresente as configurações do horizonte de aprendizagem, que é representado pela quantidade máxima de passos de tempo por episódios, quantidade máxima de episódios, e política de exploração ao longo do tempo;*
 	R: **Utilizei os seguintes valores como padrão (podem ser configurados)**
 	| num_episodes | max_steps | epsilon | decay_epsilon | max_epsilon | min_epsilon |
 	|--|--|--|--|--| --|
 	| 1000 | 100 | 1.0 | 0.05 | 1.0 |  0.001 |
 
-3. **Resultados Experimentais**
+4. **Resultados Experimentais**  
 	a) Apresente a curva de convergência, representada pela quantidade de passos (timesteps) necessários para resolver a tarefa ao longo do tempo (episódios).
 	R:** Curva de convergência com os seguintes parâmetros (os defaults)**
 	- num_episodes.: 1000
@@ -62,5 +61,5 @@ Basicamente a minha solução para o problema foi baseada na junção da soluç�
 	- Average reward (last 10 episodes): -4.989999999999998
 	![](https://github.com/lobokoch/reinforcement-learning/blob/main/curva_convergencia_1.png?raw=true)
 	
-		b) *Apresente o tempo de processamento necessário para resolver o problema.*
-		R: **0.443 segundos.**
+	b) *Apresente o tempo de processamento necessário para resolver o problema.*
+	R: **0.443 segundos.**
