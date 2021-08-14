@@ -18,14 +18,14 @@ public class ReinforcementLearningExercio1 extends Furbot {
 	@Override
 	public void inteligencia() throws Exception {
 		debug = getPropBool("debug", false);
-		int num_episodes = getPropInt("num_episodes", 150);
+		int num_episodes = getPropInt("num_episodes", 1000);
 		int max_steps = getPropInt("max_steps", 100);
 		double alpha = getPropDouble("alpha", 0.5);
 		double gamma = getPropDouble("gamma", 0.9);
 		double epsilon = getPropDouble("epsilon", 1.0);
 		double decay_epsilon = getPropDouble("decay_epsilon", 0.05);
 		double max_epsilon = getPropDouble("max_epsilon", 1.0);
-		double min_epsilon = getPropDouble("min_epsilon", 0.001);
+		double min_epsilon = getPropDouble("min_epsilon", 0.01);
 		
 		
 		System.out.println("**************** FURB - Pos Datascience ****************");
@@ -76,11 +76,14 @@ public class ReinforcementLearningExercio1 extends Furbot {
 		}
 		out.print("]");
 		out.close();
-		System.out.println("rewards..........................: " + rewards);
 		
 		System.out.println("Average reward (all episodes)....: " + rewards.stream().mapToDouble(Double::valueOf).sum() / num_episodes);
 		System.out.println("Average reward (last 10 episodes): " + rewards.stream().skip(rewards.size() - 10).mapToDouble(Double::valueOf).sum() / 10);
-
+		
+		if (debug) {
+			System.out.println(" ");
+			System.out.println("rewards..........................: " + rewards);
+		}
 	}
 
 	private List<Double> qLearning(ReinforcementLearningEnv environment, int num_episodes, double alpha, double gamma,
