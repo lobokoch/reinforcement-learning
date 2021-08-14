@@ -81,10 +81,66 @@ Basicamente a minha solução para o problema foi baseada na junção da soluç�
 ![](https://github.com/lobokoch/reinforcement-learning/blob/main/curva_convergencia_150.png?raw=true)
 
 # Funcionamento para executar a aplicação
-- O projeto é feito em Java 11 com Eclipse 2021-06 , portanto precisa de:
--  JDK 11 - Pode ser baixada para o SO desejado a parti de: [https://adoptopenjdk.net](https://adoptopenjdk.net)
+- O projeto é feito em Java 11 com Eclipse 2021-06 (última versão no momento da realização do trabalho) , portanto precisa de:
 -  Eclipse IDE - Pode ser baixado [daqui](https://www.eclipse.org/downloads/packages/release/2021-06/r/eclipse-ide-enterprise-java-and-web-developers)
-- Baixar o projeto [TrabalhoQLearning](https://github.com/lobokoch/reinforcement-learning/tree/main/TrabalhoQLearning) do GitHub
-- No Eclipse, configurar o build path para os jar externos do Furbot contidos no diretório: [dependencias_furbot](https://github.com/lobokoch/reinforcement-learning/tree/main/TrabalhoQLearning/dependencias_furbot) dentro do próprio projeto.
+-  Baixa a JDK 11, descompactar em um diretório e configurar na IDE Eclipse - A JDK 11 pode ser baixada para o SO desejado a parti de: [https://adoptopenjdk.net](https://adoptopenjdk.net)
+- Para configurar a JDK 11 na IDE do Eclipse, acesse o menu **Window** > **Preferences** e siga o desenho da tela abaixo:![](https://github.com/lobokoch/reinforcement-learning/blob/main/setup_jdk_11.png?raw=true)
+- Baixar o projeto [TrabalhoQLearning](https://github.com/lobokoch/reinforcement-learning/tree/main/TrabalhoQLearning) do GitHub e importar no Eclipse.
+- Verifique na IDE Eclipse se o Java Compiler também está configurado para a versão 11 do Java, caso não esteja (pode estar configurado por padrão para a versão 16 do Java por exemplo), ajuste para a versão 11.
+- Acesse o menu **File** > **Properties** (exibe as propriedades do projeto em questão):![](https://github.com/lobokoch/reinforcement-learning/blob/main/java_compiler_1.png?raw=true)
 
-! [](https://github.com/lobokoch/reinforcement-learning/blob/main/configrure_external_jars.png?raw=true)
+- No Eclipse, configurar o build path para os jars externos do Furbot contidos no diretório: [dependencias_furbot](https://github.com/lobokoch/reinforcement-learning/tree/main/TrabalhoQLearning/dependencias_furbot) dentro do próprio projeto.
+- Clicar com o botão direito sobre o projeto e seguir os passos da imagem abaixo:   ![](https://github.com/lobokoch/reinforcement-learning/blob/main/build_path.png?raw=true)
+
+Adicionar os jars externos, seguindo a imagem abaixo:
+![](https://github.com/lobokoch/reinforcement-learning/blob/main/configrure_external_jars.png?raw=true)
+
+- A classe principal pra executar (tem o método **main**) é `ReinforcementLearningExercio1.java`  
+![](https://github.com/lobokoch/reinforcement-learning/blob/main/main.png?raw=true) 
+
+- É possível modificar os parâmetros nas variáveis dentro do retângulo em verde na imagem acima.
+- Para executar a aplicação na IDE Eclipse, basta pressionar a tecla **F11**, ou clicar com o botão direito no mouse numa área do editor de código próximo ao método **main** da classe **ReinforcementLearningExercio1.java** e no menu de contexto, clicar em **Run As** > **Java Application**.
+- ![](https://github.com/lobokoch/reinforcement-learning/blob/main/run.png?raw=true)
+
+- Vai abrir a tela do Furbot. Pode-se aumentar a velocidade do Furbot até 10 (velocidade máxima, foi usado 10 nos experimentos) e depois clicar no botão de execução (os elementos estão circundados com retângulo vermelho no print abaixo).
+![](https://github.com/lobokoch/reinforcement-learning/blob/main/furbot_1.png?raw=true)
+
+- Ao final da execução é exibido um relatório conforme abaixo no console do Eclipse:
+```
+**************** FURB - Pos Datascience ****************
+ Disciplina: Aprendizado por Reforco 
+ Prof. Ricardo Grunitzki 
+ Aluno: Marcio Koch 
+ Trabalho Pratico I - Problema de Transporte de Objeto 
+ *******************************************************
+*********** PARAMETROS DE EXECUCAO ***********
+debug........: false
+num_episodes.: 1000
+max_steps....: 100
+alpha........: 0.5
+gamma........: 0.9
+epsilon......: 1.0
+decay_epsilon: 0.05
+max_epsilon..: 1.0
+min_epsilon..: 0.01
+***********************************************
+ 
+-----------------------------------------------------------------------------------------------------------
+All 1000 episodes has been finished with 961 DONES and 39 NOT DONE.
+-----------------------------------------------------------------------------------------------------------
+ 
+*************** REPORT ***************
+Processing time .................: 0.464 seconds.
+Average reward (all episodes)....: -5.464199999999996
+Average reward (last 10 episodes): -5.639999999999996
+```
+
+# Exemplo de uma execução com o objetivo atingido
+Objeto (tesouro) transportado pelo agente (Furbot) até a base (área dos Aliens).
+
+![](https://github.com/lobokoch/reinforcement-learning/blob/main/done.png?raw=true)
+
+
+**NOTA 1:** Se ativar a variável `debug = true (false é o padrão)`, exibe mais informações no console do Eclipse, como os estados da execução.
+
+**NOTA 2:** Caso ao final da execução exibir um stack trace de erro no console do Eclipse, não se preocupe que é um problema interno do próprio Furbot, nem sempre acontece e não interfere nos resultados nem na execução.
