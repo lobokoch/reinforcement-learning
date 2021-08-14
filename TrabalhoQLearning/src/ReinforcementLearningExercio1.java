@@ -86,17 +86,22 @@ public class ReinforcementLearningExercio1 extends Furbot {
 		System.out.println("max_epsilon..: " + max_epsilon);
 		System.out.println("min_epsilon..: " + min_epsilon);
 		System.out.println("***********************************************");
-
+		
+				
 		ReinforcementLearningEnv environment = new ReinforcementLearningEnv(this);
+		long startTime = System.currentTimeMillis();
 		List<Double> rewards = qLearning(environment, num_episodes, alpha, gamma, epsilon, decay_epsilon, min_epsilon,
 				max_epsilon);
 		
+		long ellapsedTime = System.currentTimeMillis() - startTime;
+		
 		System.out.println(" " );
 		System.out.println("*************** REPORT ***************" );
-		System.out.println("rewards = " + rewards);
+		System.out.println("Processing time .................: " + (ellapsedTime / (double)1000) + " seconds.");
+		System.out.println("rewards..........................: " + rewards);
 		
-		System.out.println( ("Average reward (all episodes): " + rewards.stream().mapToDouble(Double::valueOf).sum() / num_episodes));
-		System.out.println( ("Average reward (last 10 episodes): " + rewards.stream().skip(rewards.size() - 10).mapToDouble(Double::valueOf).sum()/10));
+		System.out.println("Average reward (all episodes)....: " + rewards.stream().mapToDouble(Double::valueOf).sum() / num_episodes);
+		System.out.println("Average reward (last 10 episodes): " + rewards.stream().skip(rewards.size() - 10).mapToDouble(Double::valueOf).sum() / 10);
 
 	}
 
@@ -192,7 +197,7 @@ public class ReinforcementLearningExercio1 extends Furbot {
 		
 		System.out.println(" ");
 		System.out.println("-----------------------------------------------------------------------------------------------------------");
-		System.out.println("All " + num_episodes + " episodes has been finished with " + donesCount + " DONES!");
+		System.out.println("All " + num_episodes + " episodes has been finished with " + donesCount + " DONES and " + (num_episodes - donesCount) + " NOT DONE.");
 		System.out.println("-----------------------------------------------------------------------------------------------------------");
 
 		return rewards;
