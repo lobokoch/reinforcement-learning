@@ -1,0 +1,94 @@
+<furbot>
+	<enunciado>
+		Trabalho Prático I - Problema de Transporte de Objeto
+		Disciplina: Reinforcement Learning
+		Curso: Especialização em Ciência de Dados
+		Professor: Ricardo Grunitzki
+		Aluno: Márcio Koch
+	</enunciado>
+
+	<mundo>
+		<qtdadeLin>6</qtdadeLin>
+		<qtdadeCol>7</qtdadeCol>
+		<explodir>false</explodir>
+	</mundo>
+
+	<robo>
+		<x>0</x>
+		<y>5</y>
+	</robo>
+	
+	<objeto class="br.furb.furbot.Alien">
+		<x>2</x>
+		<y>0</y>
+		<bloqueado>false</bloqueado>
+	</objeto>
+	<objeto class="br.furb.furbot.Alien">
+		<x>3</x>
+		<y>0</y>
+		<bloqueado>false</bloqueado>
+	</objeto>
+	<objeto class="br.furb.furbot.Alien">
+		<x>4</x>
+		<y>0</y>
+		<bloqueado>false</bloqueado>
+	</objeto>
+	
+	<objeto class="br.furb.furbot.Parede">
+		<x>3</x>
+		<y>1</y>
+		<bloqueado>false</bloqueado>
+		<explodir>false</explodir>
+	</objeto>
+	
+	<objeto class="br.furb.furbot.Tesouro">
+		<x>3</x>
+		<y>2</y>
+		<bloqueado>false</bloqueado>
+		<explodir>false</explodir>
+	</objeto>
+
+	<objeto class="br.furb.furbot.Parede">
+		<x>0</x>
+		<y>4</y>
+		<explodir>false</explodir>
+		<bloqueado>false</bloqueado>
+	</objeto>
+	<objeto class="br.furb.furbot.Parede">
+		<x>1</x>
+		<y>4</y>
+		<explodir>false</explodir>
+		<bloqueado>false</bloqueado>
+	</objeto>
+	<objeto class="br.furb.furbot.Parede">
+		<x>3</x>
+		<y>4</y>
+		<explodir>false</explodir>
+		<bloqueado>false</bloqueado>
+	</objeto>
+	<objeto class="br.furb.furbot.Parede">
+		<x>4</x>
+		<y>4</y>
+		<explodir>false</explodir>
+		<bloqueado>false</bloqueado>
+	</objeto>
+	<objeto class="br.furb.furbot.Parede">
+		<x>5</x>
+		<y>4</y>
+		<explodir>false</explodir>
+		<bloqueado>false</bloqueado>
+	</objeto>
+	<objeto class="br.furb.furbot.Parede">
+		<x>6</x>
+		<y>4</y>
+		<explodir>false</explodir>
+		<bloqueado>false</bloqueado>
+	</objeto>
+	<objeto class="br.furb.furbot.Parede">
+		<x>6</x>
+		<y>5</y>
+		<explodir>false</explodir>
+		<bloqueado>false</bloqueado>
+	</objeto>
+
+</furbot>
