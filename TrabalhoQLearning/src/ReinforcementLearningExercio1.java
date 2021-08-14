@@ -61,6 +61,7 @@ public class ReinforcementLearningExercio1 extends Furbot {
 	public void inteligencia() throws Exception {
 		debug = getPropBool("debug", false);
 		int num_episodes = getPropInt("num_episodes", 1000);
+		int max_steps = getPropInt("max_steps", 100);
 		double alpha = getPropDouble("alpha", 0.5);
 		double gamma = getPropDouble("gamma", 0.9);
 		double epsilon = getPropDouble("epsilon", 1.0);
@@ -79,6 +80,7 @@ public class ReinforcementLearningExercio1 extends Furbot {
 		System.out.println("*********** PARAMETROS DE EXECUCAO ***********");
 		System.out.println("debug........: " + debug);
 		System.out.println("num_episodes.: " + num_episodes);
+		System.out.println("max_steps....: " + max_steps);
 		System.out.println("alpha........: " + alpha);
 		System.out.println("gamma........: " + gamma);
 		System.out.println("epsilon......: " + epsilon);
@@ -91,7 +93,7 @@ public class ReinforcementLearningExercio1 extends Furbot {
 		ReinforcementLearningEnv environment = new ReinforcementLearningEnv(this);
 		long startTime = System.currentTimeMillis();
 		List<Double> rewards = qLearning(environment, num_episodes, alpha, gamma, epsilon, decay_epsilon, min_epsilon,
-				max_epsilon);
+				max_epsilon, max_steps);
 		
 		long ellapsedTime = System.currentTimeMillis() - startTime;
 		
@@ -106,7 +108,7 @@ public class ReinforcementLearningExercio1 extends Furbot {
 	}
 
 	private List<Double> qLearning(ReinforcementLearningEnv environment, int num_episodes, double alpha, double gamma,
-			double epsilon, double decay_epsilon, double min_epsilon, double max_epsilon) {
+			double epsilon, double decay_epsilon, double min_epsilon, double max_epsilon, int max_steps) {
 
 		List<Double> rewards = new ArrayList<>();
 		List<Double> epsilons = new ArrayList<>();
@@ -127,7 +129,7 @@ public class ReinforcementLearningExercio1 extends Furbot {
 			// reward accumulated along episode
 			double accumulated_reward = 0;
 
-			for (int step_i = 0; step_i < 100; step_i++) {
+			for (int step_i = 0; step_i < max_steps; step_i++) {
 				if (debug)
 					System.out.println("step_i:" + step_i);
 
